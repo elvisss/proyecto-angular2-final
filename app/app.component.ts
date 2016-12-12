@@ -1,11 +1,11 @@
-// Importar Component desde el núcleo de Angular
-import {Component} from '@angular/core';
- 
-// Decorador component, indicamos en que etiqueta se va a cargar la plantilla
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 @Component({
     selector: 'my-app',
-    template: '<h1>Hola mundo con Angular 2 !!</h1>'
+    templateUrl: 'app/view/home.html'
 })
- 
-// Clase del componente donde irán los datos y funcionalidades
-export class AppComponent { }
+
+export class AppComponent {
+  public titulo:string = "Restaurantes con Angular 2";
+}

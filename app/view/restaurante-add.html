@@ -1,0 +1,38 @@
+<h1>{{titulo}}</h1>
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <label>Nombre:</label>
+  <p>
+    <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="restaurante.nombre" required />
+    <span *ngIf="!nombre.valid">No válido</span>
+  </p>
+
+  <label>Dirección:</label>
+  <p>
+    <input type="text" #direccion="ngModel" name="direccion" [(ngModel)]="restaurante.direccion" required />
+    <span *ngIf="!direccion.valid">No válido</span>
+  </p>
+
+  <label>Drescipción:</label>
+  <p>
+    <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="restaurante.descripcion" required></textarea>
+    <span *ngIf="!descripcion.valid">No válido</span>
+  </p>
+
+  <select (change)="callPrecio(precio.value)" #precio name="precio">
+    <option value="bajo" [attr.selected]="restaurante.precio == 'bajo' ? 'selected' : null">Bajo</option>
+    <option value="normal" [attr.selected]="restaurante.precio == 'normal' ? 'selected' : null">Normal</option>
+    <option value="alto" [attr.selected]="restaurante.precio == 'alto' ? 'selected' : null">Alto</option>
+  </select>
+
+  <label>Imagen:</label>
+  <p>
+    <input type="file" placeholder="Subir imagen..." (change)="fileChangeEvent($event)" />
+  </p>
+
+  <p>
+    <input type="submit" value="{{titulo}}" [disabled]="!myForm.form.valid" />
+  </p>
+
+</form>
